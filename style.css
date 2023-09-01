@@ -1,13 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&display=swap');
+
 :root {
     --clr-accent: white;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: #06522B;
-    color: #ffffff;
-    font-family: 'Times New Roman', serif;
     margin: 0;
     font-size: 1.5rem;
+}
+
+.wlimit {
+    width: min(100%, 1440px);
+    padding: 1rem;
 }
 
 header {
@@ -31,8 +41,10 @@ header {
 }
 
 .title {
+    font-family: 'Lobster', cursive;
     white-space: nowrap;
     height: 100%;
+    color: white;
     background-color: #097B40;
     align-items: center;
     justify-content: center;
@@ -43,11 +55,64 @@ header {
 main {
     background-color: #ffffff;
     overflow-y: auto;
-    padding-inline: 1rem;
-    color: #000;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.cards {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.card:nth-child(even) {
+    flex-direction: column-reverse;
+}
+
+@media screen and (max-width: 1000px) {
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card:nth-child(even) {
+        flex-direction: column;
+    }
+
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    pointer-events: none;
+    max-width: 360px;
+}
+
+.card > * {
+    pointer-events: all;
+}
+
+.card > h2 {
+    font-family: 'Carter One', cursive;
+    text-align: center;
+    width: 100%;
+}
+
+.card .image {
+    border-radius: 24px;
+    border: 2px solid hsl(0 0% 0% / 0.25);
+    width: 100%;
+    height: 360px;
 }
 
 footer {
+    color: white;
     background-color: #06522B;
     display: flex;
     align-items: center;
@@ -66,11 +131,10 @@ footer {
 }
 
 a {
-    color: white;
+    color: inherit;
     text-decoration: none;
 }
 
 a:hover {
     text-decoration: underline;
 }
-
