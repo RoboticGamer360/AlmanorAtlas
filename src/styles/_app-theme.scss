@@ -1,0 +1,32 @@
+@use '@angular/material' as mat;
+
+@use 'sass:map';
+
+// Styles for the app that are based on the current theme.
+@mixin mat-theme($theme) {
+  $primary: map.get($theme, primary);
+  $accent: map.get($theme, accent);
+  $warn: map.get($theme, warn);
+  $background: map.get($theme, background);
+  $foreground: map.get($theme, foreground);
+}
+
+@mixin theme($theme) {
+  $light: map.get($theme, light);
+  $dark: map.get($theme, dark);
+
+  :root {
+    --wlimit-size: 1200px;
+    --wlimit-padding: 1rem;
+    
+    @each $color, $value in $light {
+      --clr-#{$color}: #{$value};
+    }
+
+    @media screen and (prefers-color-scheme: dark) {
+      @each $color, $value in $dark {
+        --clr-#{$color}: #{$value};
+      }
+    }
+  }
+}

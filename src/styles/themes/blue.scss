@@ -1,0 +1,61 @@
+@use 'sass:map';
+@use '../app-theme';
+
+$theme: (
+  light: (
+    surface: #f7f7f7,
+    divider: hsl(0 0% 0% / 0.2),
+    
+    neutral: white,
+    neutral-contrast: black,
+    neutral-semicontrast: hsl(0 0% 0% / 0.5),
+    neutral-slightcontrast: hsl(0 0% 0% / 0.05),
+    neutral-hover: hsl(0 0% 0% / 0.1),
+    neutral-ripple: hsl(0 0% 0% / 0.2),
+    neutral-border: hsl(0 0% 0% / 0.25),
+    neutral-border-focus: black,
+    
+    primary: #144deb,
+    primary-contrast: white,
+    primary-semicontrast: hsl(0 0% 100% / 0.5),
+    primary-slightcontrast: hsl(0 0% 100% / 0.05),
+    primary-hover: hsl(0 0% 100% / 0.25),
+    primary-ripple: hsl(0 0% 100% / 0.25),
+    primary-border-focus: black,
+    
+    disabled: #f2f2f2,
+    disabled-contrast: hsl(0 0% 0% / 0.25),
+    disabled-semicontrast: hsl(0 0% 0% / 0.25),
+    disabled-slightcontrast: hsl(0 0% 0% / 0.05),
+    disabled-border: hsl(0 0% 0% / 0.25),
+  ),
+  dark: (
+    surface: #111113,
+    divider: hsl(0 0% 100% / 0.15),
+    
+    neutral: #1e1e1e,
+    neutral-contrast: white,
+    neutral-semicontrast: hsl(0 0% 100% / 0.5),
+    neutral-slightcontrast: hsl(0 0% 100% / 0.05),
+    neutral-hover: hsl(0 0% 100% / 0.2),
+    neutral-ripple: hsl(0 0% 100% / 0.25),
+    neutral-border: hsl(0 0% 100% / 0.7),
+    neutral-border-focus: white,
+    
+    primary: #144deb,
+    primary-contrast: white,
+    primary-semicontrast: hsl(0 0% 100% / 0.5),
+    primary-slightcontrast: hsl(0 0% 100% / 0.25),
+    primary-hover: hsl(0 0% 100% / 0.25),
+    primary-ripple: hsl(0 0% 100% / 0.25),
+    primary-border-focus: white,
+    
+    disabled: #393939,
+    disabled-contrast: hsl(0 0% 100% / 0.25),
+    disabled-semicontrast: hsl(0 0% 100% / 0.25),
+    disabled-slightcontrast: hsl(0 0% 100% / 0.25),
+    disabled-border: hsl(0 0% 100% / 0.7),
+  )
+);
+
+@include app-theme.theme($theme);

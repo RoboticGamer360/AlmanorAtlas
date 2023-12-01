@@ -1,0 +1,95 @@
+:host {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.drawer {
+  position: absolute;
+  display: flex;
+  width: 340px;
+  height: 100%;
+  color: var(--clr-neutral-contrast);
+  background-color: var(--clr-neutral);
+  border-right: 1px solid var(--clr-divider);
+  box-shadow: none;
+  transform: translateX(-340px);
+  pointer-events: all;
+  z-index: 2;
+  transition: transform 0.2s cubic-bezier(0, .5, .5, 1),
+    color 0.2s,
+    background-color 0.2s,
+    border-color 0.2s;
+  
+  .navigation {
+    width: 100%;
+    pointer-events: none;
+    
+    .navigation-list {
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+      pointer-events: all;
+      
+      .navigation-item {
+        width: 100%;
+        height: 56px;
+        justify-content: start;
+        text-decoration: none;
+        border-radius: 0;
+        box-shadow: none;
+        
+        .icon {
+          display: flex;
+          width: 40px;
+          height: 40px;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+
+      .navigation-item::after {
+        border-radius: 0;
+      }
+
+      .navigation-item.active {
+        background-color: var(--clr-neutral-slightcontrast);
+        box-shadow: inset 2px 0 0 var(--clr-neutral),
+          inset 6px 0 0 var(--clr-neutral-contrast);
+      }
+    }
+  }
+}
+
+.drawer.open {
+  transform: none;
+  box-shadow: inset 1px 0 hsl(0 0% 0% / 0.25);
+}
+
+.mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: hsl(0 0% 0% / 0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.mask.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .drawer {
+    transition: none;
+  }
+
+  .mask {
+    transition: none;
+  }
+}

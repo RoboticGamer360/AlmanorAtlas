@@ -1,0 +1,107 @@
+mat-expansion-panel {
+  background-color: var(--clr-neutral)!important;
+
+  mat-expansion-panel-header {
+    > span.mat-content {
+      .mat-expansion-panel-header-title {
+        color: var(--clr-neutral-contrast);
+      }
+
+      .mat-expansion-panel-header-description {
+        color: var(--clr-neutral-semicontrast);
+      }
+    }
+
+    > .mat-expansion-indicator::after {
+      color: var(--clr-neutral-semicontrast);
+    }
+  }
+}
+
+.mat-tab-label-container .mat-tab-label-content {
+  color: var(--clr-neutral-contrast);
+}
+
+.mat-table {
+  background-color: var(--clr-neutral)!important;
+
+  * {
+    color: var(--clr-neutral-contrast);
+  }
+
+  .mat-cell {
+    color: var(--clr-neutral-contrast);
+  }
+}
+
+.mat-paginator {
+  background-color: var(--clr-neutral)!important;
+
+  .mat-paginator-page-size-label {
+    color: var(--clr-neutral-semicontrast);
+  }
+
+  .mat-paginator-range-actions {
+    color: var(--clr-neutral-contrast);
+  }
+}
+
+mat-select {
+  .mat-select-value {
+    color: var(--clr-neutral-contrast)!important;
+  }
+
+  .mat-select-arrow {
+    color: var(--clr-neutral-contrast);
+  }
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: var(--clr-neutral-semicontrast)!important;
+}
+
+// Set sticky table header below navbar
+.mat-table > thead {
+  position: relative;
+  z-index: 1;
+}
+
+.mat-expansion-panel-header-title {
+  flex-grow: 0!important;
+}
+
+.mat-expansion-panel-body {
+  padding: 0!important;
+}
+
+.cdk-overlay-container {
+  z-index: 1500;
+}
+
+.mat-button.mat-primary.mat-button-disabled,
+.mat-button.mat-accent.mat-button-disabled,
+.mat-button.mat-warn.mat-button-disabled,
+.mat-button.mat-button-disabled.mat-button-disabled,
+.mat-icon-button.mat-primary.mat-button-disabled,
+.mat-icon-button.mat-accent.mat-button-disabled,
+.mat-icon-button.mat-warn.mat-button-disabled,
+.mat-icon-button.mat-button-disabled.mat-button-disabled,
+.mat-stroked-button.mat-primary.mat-button-disabled,
+.mat-stroked-button.mat-accent.mat-button-disabled,
+.mat-stroked-button.mat-warn.mat-button-disabled,
+.mat-stroked-button.mat-button-disabled.mat-button-disabled {
+  color: var(--clr-neutral-semicontrast)!important;
+}
+
+.mdc-linear-progress__bar-inner {
+  border-color: var(--clr-primary)!important;
+}
+
+.mdc-tab {
+  letter-spacing: normal!important;
+}
+
+mat-tab-group {
+  position: relative;
+  z-index: 0;
+}

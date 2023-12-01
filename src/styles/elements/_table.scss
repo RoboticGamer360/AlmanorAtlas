@@ -1,0 +1,28 @@
+.table {
+  color: var(--clr-neutral-contrast);
+  background-color: var(--clr-neutral);
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 1px var(--clr-neutral-border);
+  border-collapse: collapse;
+  
+  tbody > tr:nth-child(even) {
+    background-color: var(--clr-neutral-slightcontrast);
+  }
+  
+  th, td {
+    padding: 4px 8px;
+    white-space: nowrap;
+  }
+
+  th:not(:last-child), td:not(:last-child) {
+    border-right: 1px solid var(--clr-divider);
+  }
+
+  tfoot {
+    border-top: 1px solid var(--clr-divider);
+  }
+
+  thead {
+    border-bottom: 1px solid var(--clr-divider);
+  }
+}

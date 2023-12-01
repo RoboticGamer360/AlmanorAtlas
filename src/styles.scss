@@ -1,0 +1,113 @@
+// Dependencies
+@use '@angular/material' as mat;
+
+// Patches
+@use './styles/overrides/material';
+
+// Custom Elements
+@use './styles/elements/button';
+@use './styles/elements/input';
+@use './styles/elements/select';
+@use './styles/elements/table';
+
+// Themes
+@use './styles/app-theme';
+@use './styles/themes/blue';
+
+// Material Theme Setup
+$mat-primary: mat.define-palette(mat.$indigo-palette);
+$mat-accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
+$mat-theme: mat.define-light-theme((
+  color:  (
+    primary: $mat-primary,
+    accent: $mat-accent
+  ),
+  typography: mat.define-typography-config()
+));
+
+@include mat.all-component-typographies();
+@include mat.core();
+
+@include mat.all-component-themes($mat-theme);
+@include app-theme.mat-theme($mat-theme);
+
+// Global styles
+* {
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--clr-neutral-contrast);
+  transition: color 0.2s, background-color 0.2s;
+  background-color: #06522B;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  // margin: 0;
+  font-weight: 500;
+}
+
+.h-divider-1 {
+  width: 100%;
+  height: 1px;
+  background-color: var(--clr-divider);
+}
+
+ul { padding-left: 0; }
+
+.icon {
+  font-family: 'Material Icons';
+  font-size: 24px;
+  font-style: normal;
+  user-select: none;
+
+  &.icon-small { font-size: 18px; }
+  &.icon-round { font-family: 'Material Icons Round'; }
+  &.icon-outlined { font-family: 'Material Icons Outlined'; }
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.nav-item {
+  cursor: pointer;
+  
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    user-select: none;
+    color: var(--bs-body-color);
+    transition: none;
+  }
+}
+
+.content-wrapper {
+  height: fit-content;
+  padding: 1rem;
+  max-width: 1440px;
+  margin-inline: auto;
+}
+
+.wlimit {
+  width: min(100%, 1440px);
+  margin-inline: auto;
+  padding: 1rem;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}

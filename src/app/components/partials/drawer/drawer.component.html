@@ -1,0 +1,23 @@
+<div class="drawer" [ngClass]="{open: isOpen}">
+  <nav class="navigation" role="navigation">
+    <ul class="navigation-list">
+      <li *ngFor="let entry of drawerEntries, index as i">
+        <a [tabIndex]="isOpen ? i + 2 : -1"
+          class="navigation-item btn"
+          [routerLink]="entry.link"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          matRipple
+          matRippleColor="var(--clr-neutral-ripple)">
+
+          <span class="icon">{{ entry.icon }}</span>
+          <span class="label">{{ entry.label }}</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+<div
+  class="mask"
+  [ngClass]="{active: isOpen}"
+  (click)="closeDrawer()"></div>
