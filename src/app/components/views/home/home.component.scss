@@ -79,6 +79,5 @@ main > *:not(.bg-mask) {
   border: 2px solid hsl(0 0% 0% / 0.25);
   width: 100%;
   height: 360px;
-  background-position: center;
-  background-size: cover;
+  object-fit: cover;
 }
