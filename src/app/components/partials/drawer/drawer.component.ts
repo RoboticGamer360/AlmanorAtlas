@@ -21,7 +21,7 @@ import { DrawerService } from "src/app/core/drawer/drawer.service";
   drawerServiceSubscription!: Subscription;
   drawerEntries = this.drawerService.entries;
   closeDrawer = this.drawerService.close;
-  
+
   constructor (
     private drawerService: DrawerService
   ) {}

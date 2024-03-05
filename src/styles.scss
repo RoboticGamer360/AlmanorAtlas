@@ -19,11 +19,11 @@ $mat-primary: mat.define-palette(mat.$indigo-palette);
 $mat-accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
 $mat-theme: mat.define-light-theme((
   color:  (
-    primary: $mat-primary,
-    accent: $mat-accent
+  primary: $mat-primary,
+  accent: $mat-accent
   ),
   typography: mat.define-typography-config()
-));
+  ));
 
 @include mat.all-component-typographies();
 @include mat.core();
@@ -81,7 +81,7 @@ ul { padding-left: 0; }
 
 .nav-item {
   cursor: pointer;
-  
+
   .nav-link {
     display: flex;
     align-items: center;

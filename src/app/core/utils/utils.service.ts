@@ -35,20 +35,20 @@ declare global {
     ): number => {
       const slope = (outputTo - outputFrom) / ( inputTo - inputFrom);
       const output = slope * (value - inputFrom) + outputFrom;
-  
+
       if (!clamp) return output;
-  
+
       // Handle clamping
       if (slope > 0) {
         if (output > outputTo) return outputTo;
         if (output < outputFrom) return outputFrom;
       }
-  
+
       if (slope < 0) {
         if (output > outputFrom) return outputFrom;
         if (output < outputTo) return outputTo;
       }
-  
+
       return output;
     }
 

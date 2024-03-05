@@ -22,17 +22,17 @@
     color 0.2s,
     background-color 0.2s,
     border-color 0.2s;
-  
+
   .navigation {
     width: 100%;
     pointer-events: none;
-    
+
     .navigation-list {
       padding: 0;
       margin: 0;
       list-style-type: none;
       pointer-events: all;
-      
+
       .navigation-item {
         width: 100%;
         height: 56px;
@@ -40,7 +40,7 @@
         text-decoration: none;
         border-radius: 0;
         box-shadow: none;
-        
+
         .icon {
           display: flex;
           width: 40px;

@@ -36,12 +36,12 @@ main > *:not(.bg-mask) {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    
+
     h2 {
       margin: 0;
       font-family: 'Carter One';
     }
-    
+
     p {
       margin: 0;
     }
@@ -50,18 +50,18 @@ main > *:not(.bg-mask) {
 
 #hot-spots {
   // ...
-  
+
   h2 {
     color: #EE7200;
     font-family: 'Carter One';
   }
-  
+
   .row {
     display: flex;
     gap: 1rem;
     padding: 0;
     flex-wrap: wrap;
-    
+
     .card {
       display: flex;
       gap: 10px;
@@ -73,7 +73,7 @@ main > *:not(.bg-mask) {
       border-radius: 12px;
       border: 1px solid hsl(0 0% 0% / 0.25);
       width: 100%;
-      
+
 
       .left {
         flex-shrink: 0;
