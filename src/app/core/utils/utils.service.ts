@@ -63,4 +63,22 @@ declare global {
       return values.reduce((cur, acc) => cur + acc, 0);
     }
   }
+
+  hexColorToInt(color: string): number {
+    color = color.replace('#', '');
+    return parseInt(color, 16);
+  }
+
+  intColorToRGB(color: number): {r: number, g: number, b: number} {
+    return {
+      r: (color & 0xff0000) >> 16,
+      g: (color & 0x00ff00) >> 8,
+      b: color & 0x0000ff
+    };
+  }
+
+  hexColorToRGB(color: string): {r: number, g: number, b: number} {
+    const intClr = this.hexColorToInt(color);
+    return this.intColorToRGB(intClr);
+  }
 }

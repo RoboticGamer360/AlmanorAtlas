@@ -1,7 +1,6 @@
 main {
   position: relative;
   overflow-y: auto;
-  color: black;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,11 +47,15 @@ main > *:not(.bg-mask) {
   }
 }
 
-#hot-spots {
-  // ...
+section {
+  padding-block: 1rem;
+}
+
+#popular-destinations {
+  padding-top: 0;
 
   h2 {
-    color: #EE7200;
+    color: var(--clr-neutral-contrast);
     font-family: 'Carter One';
   }
 
@@ -71,9 +74,8 @@ main > *:not(.bg-mask) {
       align-items: center;
       background-color: #ffffff;
       border-radius: 12px;
-      border: 1px solid hsl(0 0% 0% / 0.25);
+      border: 1px solid var(--clr-divider);
       width: 100%;
-
 
       .left {
         flex-shrink: 0;
@@ -81,6 +83,7 @@ main > *:not(.bg-mask) {
         width: 280px;
         height: 100%;
         border-radius: 4px;
+        object-fit: cover;
       }
 
       .right {
@@ -95,6 +98,7 @@ main > *:not(.bg-mask) {
           display: flex;
           flex-direction: column;
           gap: 10px;
+          overflow-y: auto;
 
           h3 {
             margin: 0;
@@ -106,15 +110,12 @@ main > *:not(.bg-mask) {
           }
         }
 
-        .actions {
+        .address {
+          font-size: 1.25rem;
+          font-weight: 900;
           display: flex;
           justify-content: end;
-
-          a {
-            color: var(--clr-primary);
-            font-weight: bold;
-            text-decoration: underline;
-          }
+          color: var(--clr-neutral-semicontrast);
         }
       }
     }

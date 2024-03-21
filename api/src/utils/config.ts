@@ -7,12 +7,12 @@ switch (process.env.ENVIRONMENT.toLowerCase()) {
   case 'development':
     production = false;
     break;
-  
+
   case 'prod':
   case 'production':
     production = true;
     break;
-  
+
   default:
     production = false;
 }
@@ -24,4 +24,11 @@ if (production) {
   } else PORT = 80;
 } else PORT = 3000;
 
-export default { production, PORT }
+let dataPath: string;
+if (process.platform === 'win32') {
+  dataPath = 'C:\\ProgramData\\almanor-atlas';
+} else {
+  dataPath = '/var/lib/almanor-atlas';
+}
+
+export default { production, PORT, dataPath }
