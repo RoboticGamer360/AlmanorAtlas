@@ -22,7 +22,6 @@ h1 {
 main {
   position: relative;
   overflow-y: auto;
-  color: black;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,6 +30,10 @@ main {
 
 main > *:not(.bg-mask) {
   position: relative;
+}
+
+section {
+  padding-block: 1rem;
 }
 
 .cards {
