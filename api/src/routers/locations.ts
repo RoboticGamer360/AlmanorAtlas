@@ -1,11 +1,9 @@
 import express from 'express';
 import { getDatabase } from '../utils/database';
 import sqlite3 from 'better-sqlite3';
-import fs from 'fs';
 
 import { API, DB } from '../../';
 import { Logger } from '../utils/logger';
-import path from 'path';
 
 const router = express.Router();
 
