@@ -1,12 +1,9 @@
 import express from 'express';
 import { getDatabase } from '../utils/database';
 import sqlite3 from 'better-sqlite3';
-import fs from 'fs';
 
 import { API, DB } from '../../';
 import { Logger } from '../utils/logger';
-import path from 'path';
-import { on } from 'events';
 
 const router = express.Router();
 
@@ -54,9 +51,7 @@ router.get('/locations', (_req, res) => {
         if (row.image !== null) {
           imageURI = row.image;
         } else {
-          const imgPath = path.resolve(__dirname, '../assets/no-image.svg');
-          const imageData = fs.readFileSync(imgPath).toString('base64');
-          imageURI = 'data:image/svg+xml;base64,' + imageData;
+          imageURI = '/assets/images/location-placeholder.svg';
         }
 
         return {
