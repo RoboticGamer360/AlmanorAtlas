@@ -1,3 +1,5 @@
+import path from "path";
+
 require('dotenv').config();
 
 let production: boolean;
@@ -25,10 +27,14 @@ if (production) {
 } else PORT = 3000;
 
 let dataPath: string;
-if (process.platform === 'win32') {
-  dataPath = 'C:\\ProgramData\\almanor-atlas';
+if (production) {
+  if (process.platform === 'win32') {
+    dataPath = 'C:\\ProgramData\\almanor-atlas';
+  } else {
+    dataPath = '/var/lib/almanor-atlas';
+  }
 } else {
-  dataPath = '/var/lib/almanor-atlas';
+  dataPath = path.resolve('data');
 }
 
 export default { production, PORT, dataPath }
