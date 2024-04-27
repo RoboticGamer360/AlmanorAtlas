@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './components/views/home/home.component';
-import { PopularComponent } from './components/views/popular/popular.component';
+import { ShoppingComponent } from './components/views/shopping/shopping.component';
 
 export const routes: Routes = [
   {
@@ -8,8 +8,8 @@ export const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'popular',
-    component: PopularComponent
+    path: 'shopping',
+    component: ShoppingComponent
   },
   {
     path: '**',

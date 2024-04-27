@@ -1,40 +1,39 @@
 export namespace DB {
-  type Location = {
+  type ShoppingLocation = {
     id: number;
     name: string;
     description: string | null;
     address: string | null;
-    category: string;
     color: number | null;
     image: string | null;
   };
 }
 
 export namespace API {
-  type Location = {
+  type ShoppingLocation = {
     id: number;
     name: string;
     description?: string | undefined;
     address?: string | undefined;
-    category: string;
     color?: string | undefined;
     image: string;
   };
 
-  type LocationsResponse = {
-    data?: Location[] | undefined;
-
-    error?: {
+  type ShoppingLocationsResponse = {
+    data: ShoppingLocation[];
+    error: null;
+  } | {
+    data: null;
+    error: {
       name: string;
       message: string;
-    } | undefined;
+    };
   };
 
-  type NewLocationRequest = {
+  type NewShoppingLocationRequest = {
     name: string;
-    description: string;
+    description?: string | undefined;
     address?: string | undefined;
-    category: string;
     color?: string | undefined;
     image?: string | undefined;
   };

@@ -34,14 +34,14 @@ function intColorToHex(color: number): string {
   return '#'+r+g+b;
 }
 
-router.get('/locations', (_req, res) => {
+router.get('/locations/shopping', (req, res) => {
   let db: sqlite3.Database | undefined;
   try {
-    db = getDatabase()
-    const dbResponse = db.prepare('SELECT * FROM locations').all() as DB.Location[];
+    db = getDatabase();
+    const dbResponse = db.prepare('SELECT * FROM shopping_locations').all() as DB.ShoppingLocation[];
 
-    const response: API.LocationsResponse = {
-      data: dbResponse.map((row: DB.Location) => {
+    const response: API.ShoppingLocationsResponse = {
+      data: dbResponse.map((row: DB.ShoppingLocation) => {
         let apiColor: string | undefined = undefined;
         if (row.color !== null) {
           apiColor = intColorToHex(row.color);
@@ -54,23 +54,26 @@ router.get('/locations', (_req, res) => {
           imageURI = '/assets/images/location-placeholder.svg';
         }
 
-        return {
+        const response: API.ShoppingLocation = {
           id: row.id,
           name: row.name,
           description: row.description ?? undefined,
           address: row.address ?? undefined,
-          category: row.category,
           color: apiColor,
-          image: imageURI
+          image: imageURI,
         };
-      })
+
+        return response;
+      }),
+      error: null
     };
 
     res.json(response);
   } catch(err) {
-    Logger.error(`Couldn't GET /locations`, err);
+    Logger.error(`Couldn't GET ${req.path}`, err);
 
-    const response: API.LocationsResponse = {
+    const response: API.ShoppingLocationsResponse = {
+      data: null,
       error: {
         name: 'UNKNOWN',
         message: "An unknown error has occurred."
@@ -83,9 +86,9 @@ router.get('/locations', (_req, res) => {
   }
 });
 
-router.post('/locations', (req, res) => {
+router.post('/locations/shopping', (req, res) => {
   try {
-    const body: API.NewLocationRequest = req.body;
+    const body: API.NewShoppingLocationRequest = req.body;
 
     let dbColor: number | null = null;
     if (body.color !== undefined) {
@@ -93,67 +96,67 @@ router.post('/locations', (req, res) => {
     }
 
     const db = getDatabase();
-    db.prepare('INSERT INTO locations(name, description, address, category, color, image) VALUES(?, ?, ?, ?, ?, ?)')
-      .run(body.name, body.description, body.address, body.category, dbColor, body.image);
+    db.prepare('INSERT INTO shopping_locations(name, description, address, color, image) VALUES(?, ?, ?, ?, ?)')
+      .run(body.name, body.description, body.address, dbColor, body.image);
 
     res.status(201).json({ status: 'success' });
   } catch(err) {
-    Logger.error(`Couldn't POST /locations`, err);
+    Logger.error(`Couldn't POST ${req.path}`, err);
 
     res.json({
       error: {
         name: 'EUNKNOWN',
         message: 'An unknown error has occurred.'
-      }
+     }
     });
   }
 });
 
-router.delete('/locations/:id', (req, res) => {
-  let db: sqlite3.Database | undefined;
-  try {
-    const id = req.params.id;
-
-    db = getDatabase();
-    db.prepare('DELETE FROM locations WHERE id = ?').run(id);
-
-    res.json({ status: 'success' });
-  } catch(err) {
-    Logger.error(`Couldn't DELETE /locations/${req.params.id}`, err)
-
-    res.json({
-      error: {
-        name: 'EUNKNOWN',
-        message: 'An unknown error has occurred.'
-      }
-    });
-  } finally {
-    db?.close();
-  }
-});
-
-router.patch('/locations/:id', (req, res) => {
+router.patch('/locations/shopping/:id', (req, res) => {
   let db: sqlite3.Database | undefined;
   try {
     db = getDatabase();
-    const loc = db.prepare('SELECT * FROM locations WHERE id = ? LIMIT 1')
-      .get(req.params.id) as DB.Location;
+    const loc = db.prepare('SELECT * FROM shopping_locations WHERE id = ? LIMIT 1')
+      .get(req.params.id) as DB.ShoppingLocation;
     db.close();
 
     Object.assign(loc, req.body);
 
     db = getDatabase();
-    db.prepare('UPDATE locations SET name = ?, description = ?, address = ?, category = ?, color = ?, image = ? WHERE id = ?')
-      .run(loc.name, loc.description, loc.address, loc.category, loc.color, loc.image, req.params.id);
+    db.prepare('UPDATE shopping_locations SET name = ?, description = ?, address = ?, color = ?, image = ? WHERE id = ?')
+      .run(loc.name, loc.description, loc.address, loc.color, loc.image, req.params.id);
 
     res.json({ status: 'success' });
   } catch(err) {
-    Logger.error(`Couldn't PATCH /locations/${req.params.id}`, err);
+    Logger.error(`Couldn't PATCH ${req.path}`, err);
 
     res.json({ status: 'error', error: {
       name: 'EUNKNOWN',
       message: 'An unknown error has occurred.'
     }});
+  } finally {
+    db?.close();
+  }
+});
+
+router.delete('/locations/shopping/:id', (req, res) => {
+  let db: sqlite3.Database | undefined;
+  try {
+    const id = req.params.id;
+
+    db = getDatabase();
+    db.prepare('DELETE FROM shopping_locations WHERE id = ?').run(id);
+
+    res.json({ status: 'success' });
+  } catch(err) {
+    Logger.error(`Couldn't DELETE ${req.path}`, err)
+
+    res.json({
+      error: {
+        name: 'EUNKNOWN',
+        message: 'An unknown error has occurred.'
+      }
+    });
   } finally {
     db?.close();
   }

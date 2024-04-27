@@ -81,4 +81,9 @@ declare global {
     const intClr = this.hexColorToInt(color);
     return this.intColorToRGB(intClr);
   }
+
+  bgColorOf(color: string): string {
+    const rgb = this.hexColorToRGB(color);
+    return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.15)`;
+  }
 }

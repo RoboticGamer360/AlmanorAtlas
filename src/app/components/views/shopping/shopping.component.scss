@@ -17,41 +17,8 @@ main > *:not(.bg-mask) {
   flex-direction: column;
 }
 
-.hero  {
-  width: 720px;
-  height: 270px;
-  object-fit: cover;
-}
-
-#im-para {
-  display: flex;
-  gap: 1rem;
-
-  img {
-    flex-shrink: 0;
-  }
-
-  .info {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-
-    h2 {
-      margin: 0;
-      font-family: 'Carter One';
-    }
-
-    p {
-      margin: 0;
-    }
-  }
-}
-
 section {
   padding-block: 1rem;
-}
-
-#popular-destinations {
   padding-top: 0;
 
   h2 {
