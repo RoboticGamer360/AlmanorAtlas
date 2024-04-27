@@ -62,6 +62,12 @@ h1, h2, h3, h4, h5, h6 {
   background-color: var(--clr-divider);
 }
 
+.v-divider-1 {
+  width: 1px;
+  height: 100%;
+  background-color: var(--clr-divider);
+}
+
 ul { padding-left: 0; }
 
 .icon {
