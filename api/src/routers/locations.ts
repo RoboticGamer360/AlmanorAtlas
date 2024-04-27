@@ -4,6 +4,7 @@ import sqlite3 from 'better-sqlite3';
 
 import { API, DB } from '../../';
 import { Logger } from '../utils/logger';
+import { requireAuthorization } from '../utils/auth';
 import { hexColorToInt, intColorToHex } from '../utils/colors';
 
 const router = express.Router();
@@ -62,7 +63,7 @@ router.get('/locations/shopping', (req, res) => {
   }
 });
 
-router.post('/locations/shopping', (req, res) => {
+router.post('/locations/shopping', requireAuthorization, (req, res) => {
   try {
     const body: API.NewShoppingLocationRequest = req.body;
 
@@ -88,7 +89,7 @@ router.post('/locations/shopping', (req, res) => {
   }
 });
 
-router.patch('/locations/shopping/:id', (req, res) => {
+router.patch('/locations/shopping/:id', requireAuthorization, (req, res) => {
   let db: sqlite3.Database | undefined;
   try {
     db = getDatabase();
@@ -115,7 +116,7 @@ router.patch('/locations/shopping/:id', (req, res) => {
   }
 });
 
-router.delete('/locations/shopping/:id', (req, res) => {
+router.delete('/locations/shopping/:id', requireAuthorization, (req, res) => {
   let db: sqlite3.Database | undefined;
   try {
     const id = req.params.id;
