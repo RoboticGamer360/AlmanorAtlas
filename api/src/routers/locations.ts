@@ -64,6 +64,7 @@ router.get('/locations/shopping', (req, res) => {
 });
 
 router.post('/locations/shopping', requireAuthorization, (req, res) => {
+  let db: sqlite3.Database | undefined;
   try {
     const body: API.NewShoppingLocationRequest = req.body;
 
@@ -72,7 +73,7 @@ router.post('/locations/shopping', requireAuthorization, (req, res) => {
       dbColor = hexColorToInt(body.color)
     }
 
-    const db = getDatabase();
+    db = getDatabase();
     db.prepare('INSERT INTO shopping_locations(name, description, address, color, image) VALUES(?, ?, ?, ?, ?)')
       .run(body.name, body.description, body.address, dbColor, body.image);
 
@@ -84,8 +85,10 @@ router.post('/locations/shopping', requireAuthorization, (req, res) => {
       error: {
         name: 'EUNKNOWN',
         message: 'An unknown error has occurred.'
-     }
+      }
     });
+  } finally {
+    db?.close();
   }
 });
 
@@ -130,6 +133,158 @@ router.delete('/locations/shopping/:id', requireAuthorization, (req, res) => {
 
     res.json({
       error: {
+        name: 'EUNKNOWN',
+        message: 'An unknown error has occurred.'
+      }
+    });
+  } finally {
+    db?.close();
+  }
+});
+
+router.get('/locations/food', (req, res) => {
+  let db: sqlite3.Database | undefined;
+  try {
+    db = getDatabase();
+    const dbResponse = db.prepare('SELECT * FROM food_locations').all() as DB.FoodLocation[];
+
+    const response: API.FoodLocationsResponse = {
+      data: dbResponse.map((row: DB.FoodLocation) => {
+        let apiColor: string | undefined = undefined;
+        if (row.color !== null) {
+          apiColor = intColorToHex(row.color);
+        }
+
+        let imageURI: string;
+        if (row.image !== null) {
+          imageURI = row.image;
+        } else {
+          imageURI = '/assets/images/location-placeholder.svg';
+        }
+
+        const response: API.FoodLocation = {
+          id: row.id,
+          name: row.name,
+          description: row.description ?? undefined,
+          address: row.address ?? undefined,
+          color: apiColor,
+          image: imageURI,
+        };
+
+        return response;
+      }),
+      error: null
+    };
+
+    res.json(response);
+  } catch(err) {
+    Logger.error(`Couldn't GET ${req.path}`, err);
+
+    const response: API.FoodLocationsResponse = {
+      data: null,
+      error: {
+        name: 'UNKNOWN',
+        message: "An unknown error has occurred."
+      }
+    };
+
+    res.json(response);
+  } finally {
+    db?.close();
+  }
+});
+
+router.get('/locations/food', (req, res) => {
+  let db: sqlite3.Database | undefined;
+  try {
+    // ...
+  } catch(err) {
+    Logger.error(`Couldn't GET ${req.path}`, err);
+
+    const response: API.FoodLocationsResponse = {
+      data: null,
+      error: {
+        name: 'UNKNOWN',
+        message: "An unknown error has occurred."
+      }
+    };
+
+    res.json(response);
+  } finally {
+    db?.close();
+  }
+});
+
+router.post('/locations/food', requireAuthorization, (req, res) => {
+  let db: sqlite3.Database | undefined;
+  try {
+    const body: API.NewFoodLocationRequest = req.body;
+
+    let dbColor: number | null = null;
+    if (body.color !== undefined) {
+      dbColor = hexColorToInt(body.color);
+    }
+
+    db = getDatabase();
+    db.prepare('INSERT INTO food_locations(name, description, address, color, image) VALUES(?, ?, ?, ?, ?)')
+      .run(body.name, body.description, body.address, dbColor, body.image);
+
+    res.status(201).json({ status: 'success' });
+  } catch(err) {
+    Logger.error(`Couldn't POST ${req.path}`, err);
+
+    res.json({
+      error: {
+        name: 'EUNKNOWN',
+        message: 'An unknown error has occurred.'
+      }
+    });
+  } finally {
+    db?.close();
+  }
+});
+
+router.patch('/locations/food/:id', requireAuthorization, (req, res) => {
+  let db: sqlite3.Database | undefined;
+  try {
+    db = getDatabase();
+    const loc = db.prepare('SELECT * FROM food_locations WHERE id = ? LIMIT 1')
+      .get(req.params.id) as DB.FoodLocation;
+    db.close();
+
+    Object.assign(loc, req.body);
+
+    db = getDatabase();
+    db.prepare('UPDATE food_locations SET name = ?, description = ?, address = ?, color = ?, image = ? WHERE id = ?')
+      .run(loc.name, loc.description, loc.address, loc.color, loc.image, req.params.id);
+
+    res.json({ status: 'success' });
+  } catch(err) {
+    Logger.error(`Couldn't PATCH ${req.path}`, err);
+
+    res.json({ status: 'error', error: {
+      name: 'EUNKNOWN',
+      message: 'An unknown error has occurred.'
+    }});
+  } finally {
+    db?.close();
+  }
+});
+
+router.delete('/locations/food/:id', requireAuthorization, (req, res) => {
+  let db: sqlite3.Database | undefined;
+  try {
+    const id = req.params.id;
+
+    db = getDatabase();
+    db.prepare('DELETE FROM food_locations WHERE id = ?').run(id);
+
+    res.json({ status: 'success' });
+  } catch(err) {
+    Logger.error(`Couldn't DELETE ${req.path}`, err);
+
+    res.json({
+      status: 'error', error: {
         name: 'EUNKNOWN',
         message: 'An unknown error has occurred.'
       }

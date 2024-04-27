@@ -1,0 +1,20 @@
+<main class="bg-image">
+  <div class="bg-mask"></div>
+  <div class="wlimit">
+    <section>
+      <h2>Places to Grab Grub</h2>
+      <div class="row">
+        <div class="card" *ngFor="let loc of locations" [style]="{backgroundColor: loc.color && bgColorOf(loc.color)}">
+          <img class="left" [src]="loc.image">
+          <div class="right">
+            <div class="info">
+              <h3>{{loc.name}}</h3>
+              <p>{{loc.description}}</p>
+            </div>
+            <span *ngIf="loc.address !== undefined" class="address">{{loc.address}}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
