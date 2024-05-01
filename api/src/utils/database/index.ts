@@ -35,27 +35,8 @@ CREATE TABLE fishing_locations(
   color INTEGER,
   image TEXT,
   location TEXT NOT NULL,
-  accessibility TEXT
-);`, `
-CREATE TABLE fish(
-  id INTEGER PRIMARY KEY,
-  name TEXT NOT NULL
-);`, `
-CREATE TABLE bait(
-  id INTEGER PRIMARY KEY,
-  name TEXT NOT NULL
-);`, `
-CREATE TABLE fishing_location_fish(
-  location_id INTEGER NOT NULL,
-  fish_id INTEGER NOT NULL,
-  FOREIGN KEY(location_id) REFERENCES fishing_locations(id),
-  FOREIGN KEY(fish_id) REFERENCES fish(id)
-);`, `
-CREATE TABLE fishing_location_bait(
-  location_id INTEGER NOT NULL,
-  bait_id INTEGER NOT NULL,
-  FOREIGN KEY(location_id) REFERENCES fishing_locations(id),
-  FOREIGN KEY(bait_id) REFERENCES bait(id)
+  accessibility TEXT,
+  fish TEXT NOT NULL
 );`, `
 CREATE TABLE tokens(
   token TEXT PRIMARY KEY,

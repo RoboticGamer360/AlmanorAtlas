@@ -24,27 +24,8 @@ export namespace DB {
     color: number | null;
     image: string | null;
     location: string;
-    accessibility: string;
-  };
-
-  type Fish = {
-    id: number;
-    name: string;
-  };
-
-  type Bait = {
-    id: number;
-    name: string;
-  };
-
-  type FishingLocationFish = {
-    location_id: number;
-    fish_id: number;
-  };
-
-  type FishingLocationBait = {
-    location_id: number;
-    bait_id: number;
+    accessibility: string | null;
+    fish: string;
   };
 }
 
@@ -77,6 +58,14 @@ export namespace API {
     image?: string | undefined;
   };
 
+  type UpdateShoppingLocationRequest = {
+    name?: string | undefined;
+    description?: string | undefined | null;
+    address?: string | undefined | null;
+    color?: string | undefined | null;
+    image?: string | undefined | null;
+  }
+
   type FoodLocation = {
     id: number;
     name: string;
@@ -105,6 +94,14 @@ export namespace API {
     image?: string | undefined;
   };
 
+  type UpdateFoodLocationRequest = {
+    name?: string | undefined;
+    description?: string | undefined | null;
+    address?: string | undefined | null;
+    color?: string | undefined | null;
+    image?: string | undefined | null;
+  };
+
   type FishingLocation = {
     id: number;
     name: string;
@@ -112,7 +109,6 @@ export namespace API {
     color?: string | undefined;
     image: string;
     location: string;
-    bait: string[];
     fish: string[];
     accessibility?: string | undefined;
   };
@@ -134,8 +130,17 @@ export namespace API {
     color?: string | undefined;
     image?: string | undefined;
     location: string;
-    bait: string[];
     fish: string[];
     accessibility?: string | undefined;
+  };
+
+  type UpdateFishingLocationRequest = {
+    name?: string | undefined;
+    description?: string | undefined | null;
+    color?: string | undefined | null;
+    image?: string | undefined | null;
+    location?: string | undefined;
+    fish?: string[] | undefined;
+    accessibility?: string | undefined | null;
   };
 }
