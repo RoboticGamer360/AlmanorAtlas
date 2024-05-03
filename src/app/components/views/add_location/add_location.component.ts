@@ -108,7 +108,7 @@ import { AuthService } from "src/app/core/auth/auth.service";
         throw err;
     }
 
-    if (response.status === 'success') {
+    if (response.status !== 'success') {
       alert("Couldn't add location");
     }
   }
