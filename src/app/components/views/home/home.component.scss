@@ -1,4 +1,9 @@
+.h-divider-1 {
+  background-color: hsl(0 0% 100% / 0.2);
+}
+
 .summary p {
+  color: var(--clr-primary-contrast);
   margin: 1rem;
   font-size: 1.25rem;
   text-align: center;
