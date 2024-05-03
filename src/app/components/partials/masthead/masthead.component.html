@@ -5,6 +5,9 @@
       <span class="text">The Almanor Atlas</span>
     </a>
     <div class="menu">
+      <a *ngIf="user !== null" class="btn btn-outlined" routerLink="/add_location"
+        matRipple matRippleColor="var(--clr-neutral-ripple)">Add Location</a>
+
       <a class="menu-item icon icon-small btn btn-icon"
         title="Shopping Spots" routerLink="/shopping"
         matRipple matRippleColor="var(--clr-neutral-ripple)">shopping_bag</a>

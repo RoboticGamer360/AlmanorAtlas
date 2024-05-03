@@ -1,0 +1,107 @@
+<main class="bg-image">
+  <div class="bg-mask"></div>
+  <div class="wlimit">
+    <section>
+      <h1>Add Location</h1>
+
+      <h3>What kind of location are you adding?</h3>
+      <input type="radio" [(ngModel)]="locType" value="shopping" id="shopping">
+      <label for="shopping">Shopping</label>
+      <br>
+      <input type="radio" [(ngModel)]="locType" value="food" id="food">
+      <label for="food">Restaurant</label>
+      <br>
+      <input type="radio" [(ngModel)]="locType" value="fishing" id="fishing">
+      <label for="fishing">Fishing</label>
+    </section>
+
+    <section *ngIf="locType === 'shopping'" id="shoppingLocationForm">
+      <h2>New Shopping Location</h2>
+
+      <h3>Name* (Required)</h3>
+      <input type="text" class="inp" [(ngModel)]="locShop.name" (ngModelChange)="evaluateSubmitButtons()" />
+      <br><br>
+
+      <h3>Description (Optional)</h3>
+      <input type="text" class="inp" [(ngModel)]="locShop.description" />
+      <br><br>
+
+      <h3>Address (Optional)</h3>
+      <input type="text" class="inp" [(ngModel)]="locShop.address" />
+      <br><br>
+
+      <h3>Color (Optional)</h3>
+      <input type="color" [(ngModel)]="locShop.color" />
+      <br><br>
+
+      <h3>Image URL (Optional)</h3>
+      <input type="text" class="inp" [(ngModel)]="locShop.image" />
+      <br /><br />
+
+      <button type="submit" class="btn" [disabled]="!submitShopEnabled" (click)="onFormSubmit()"
+        matRipple matRippleColor="var(--clr-neutral-ripple)">Submit</button>
+    </section>
+
+    <section *ngIf="locType === 'food'" id="foodLocationForm">
+      <h2>New Restaurant</h2>
+
+      <h3>Name* (Required)</h3>
+      <input required type="text" class="inp" [(ngModel)]="locFood.name" (ngModelChange)="evaluateSubmitButtons()" />
+      <br><br>
+
+      <h3>Description (Optional)</h3>
+      <input type="text" class="inp" [(ngModel)]="locFood.description" />
+      <br><br>
+
+      <h3>Address (Optional)</h3>
+      <input type="text" class="inp" [(ngModel)]="locFood.address" />
+      <br><br>
+
+      <h3>Color (Optional)</h3>
+      <input type="color" [(ngModel)]="locFood.color" />
+      <br><br>
+
+      <h3>Image URL (Optional)</h3>
+      <input type="text" class="inp" [(ngModel)]="locFood.image" />
+      <br><br>
+
+      <button type="submit" class="btn" [disabled]="!submitFoodEnabled" (click)="onFormSubmit()"
+        matRipple matRippleColor="var(--clr-neutral-ripple)">Submit</button>
+    </section>
+
+    <section *ngIf="locType === 'fishing'" id="fishingLocationForm">
+      <h2>New Fishing Location</h2>
+
+      <h3>Name* (Required)</h3>
+      <input required type="text" class="inp" [(ngModel)]="locFish.name" (ngModelChange)="evaluateSubmitButtons()" />
+      <br><br>
+
+      <h3>Description (Optional)</h3>
+      <input type="text" class="inp" [(ngModel)]="locFish.description" />
+      <br><br>
+
+      <h3>Google Maps URL (Optional)</h3>
+      <input type="text" class="inp" [(ngModel)]="locFish.gmapurl" />
+      <br><br>
+
+      <h3>Type of Fish (Optional, Comma-Separated)</h3>
+      <input type="text" class="inp" [(ngModel)]="fishInput" />
+      <br><br>
+
+      <h3>Accessibility (Optional)</h3>
+      <input type="text" class="inp" [(ngModel)]="locFish.accessibility" />
+      <br><br>
+
+      <h3>Color (Optional)</h3>
+      <input type="color" [(ngModel)]="locFish.color" />
+      <br><br>
+
+      <h3>Image URL (Optional)</h3>
+      <input type="text" class="inp" [(ngModel)]="locFish.image" />
+      <br><br>
+
+      <button type="submit" class="btn" [disabled]="!submitFishEnabled" (click)="onFormSubmit()"
+        matRipple matRippleColor="var(--clr-neutral-ripple)">Submit</button>
+    </section>
+  </div>
+</main>
