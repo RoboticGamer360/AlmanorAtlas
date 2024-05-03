@@ -48,7 +48,7 @@ body {
   transition: color 0.2s, background-color 0.2s;
   background-color: #06522B;
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -64,6 +64,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .v-divider-1 {
   width: 1px;
+  height: 100%;
+  background-color: var(--clr-divider);
+}
+
+.v-divider-2 {
+  width: 2px;
   height: 100%;
   background-color: var(--clr-divider);
 }

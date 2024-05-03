@@ -34,7 +34,7 @@ CREATE TABLE fishing_locations(
   description TEXT,
   color INTEGER,
   image TEXT,
-  location TEXT NOT NULL,
+  gmapurl TEXT,
   accessibility TEXT,
   fish TEXT NOT NULL
 );`, `

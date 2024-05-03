@@ -23,7 +23,7 @@ export namespace DB {
     description: string | null;
     color: number | null;
     image: string | null;
-    location: string;
+    gmapurl: string | null;
     accessibility: string | null;
     fish: string;
   };
@@ -108,7 +108,7 @@ export namespace API {
     description?: string | undefined;
     color?: string | undefined;
     image: string;
-    location: string;
+    gmapurl?: string | undefined;
     fish: string[];
     accessibility?: string | undefined;
   };
@@ -129,7 +129,7 @@ export namespace API {
     description?: string | undefined;
     color?: string | undefined;
     image?: string | undefined;
-    location: string;
+    gmapurl?: string | undefined;
     fish: string[];
     accessibility?: string | undefined;
   };
@@ -139,7 +139,7 @@ export namespace API {
     description?: string | undefined | null;
     color?: string | undefined | null;
     image?: string | undefined | null;
-    location?: string | undefined;
+    gmapurl?: string | undefined;
     fish?: string[] | undefined;
     accessibility?: string | undefined | null;
   };

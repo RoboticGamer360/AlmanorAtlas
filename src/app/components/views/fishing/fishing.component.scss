@@ -20,7 +20,6 @@ main > *:not(.bg-mask) {
 section {
   padding-block: 1rem;
   padding-top: 0;
-
   h2 {
     color: var(--clr-neutral-contrast);
     font-family: 'Carter One';
@@ -73,17 +72,53 @@ section {
             font-size: 2.25rem;
           }
 
+          p { margin-bottom: 1.25rem!important; }
+
+          h4 {
+            margin: 0;
+            font-family: "Francois One";
+            font-size: 1.5rem;
+          }
+
           p {
             margin: 0;
           }
         }
 
-        .address {
-          font-size: 1.25rem;
-          font-weight: 900;
+        .notes {
           display: flex;
+          gap: 1.5rem;
           justify-content: end;
-          color: var(--clr-neutral-semicontrast);
+
+          .accessibility {
+            font-size: 1.25rem;
+            font-weight: 400;
+            display: flex;
+            justify-content: end;
+            color: var(--clr-neutral-semicontrast);
+
+            .icon-small {
+              line-height: 1.5rem;
+              margin-right: .5rem;
+              font-weight: 400;
+            }
+          }
+
+          .gmapurl {
+            font-size: 1.25rem;
+            display: flex;
+            justify-content: end;
+            font-weight: 500;
+            color: var(--clr-neutral-contrast);
+
+            .icon-small {
+              line-height: 1.5rem;
+              margin-right: .5rem;
+              font-weight: 400;
+            }
+
+            a { text-decoration: underline; }
+          }
         }
       }
     }

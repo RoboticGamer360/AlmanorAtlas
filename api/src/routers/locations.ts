@@ -325,7 +325,7 @@ router.get('/locations/fishing', (req, res) => {
           name: row.name,
           image: imageURI,
           color: apiColor,
-          location: row.location,
+          gmapurl: row.gmapurl ?? undefined,
           description: row.description ?? undefined,
           accessibility: row.accessibility ?? undefined,
           fish: fish
@@ -367,8 +367,8 @@ router.post('/locations/fishing', requireAuthorization, (req, res) => {
     const fish = body.fish.join(';');
 
     db = getDatabase();
-    db.prepare('INSERT INTO fishing_locations(name, description, color, image, location, accessibility, fish) VALUES(?, ?, ?, ?, ?, ?, ?)')
-      .run(body.name, body.description, dbColor, body.image, body.location, body.accessibility, fish);
+    db.prepare('INSERT INTO fishing_locations(name, description, color, image, gmapurl, accessibility, fish) VALUES(?, ?, ?, ?, ?, ?, ?)')
+      .run(body.name, body.description, dbColor, body.image, body.gmapurl, body.accessibility, fish);
 
     res.status(201).json({ status: 'success' });
   } catch(err) {
@@ -398,17 +398,15 @@ router.patch('/locations/fishing/:id', (req, res) => {
 
     if (body.name !== undefined) loc.name = body.name;
     if (body.description !== undefined) loc.description = body.description;
-    if (body.location !== undefined) loc.location = body.location;
+    if (body.gmapurl !== undefined) loc.gmapurl = body.gmapurl;
     if (body.image !== undefined) loc.image = body.image;
     if (body.accessibility !== undefined) loc.accessibility = body.accessibility;
-    if (body.color !== undefined && body.color !== null) loc.color = hexColorToInt(body.color);
     if (body.fish !== undefined) loc.fish = body.fish.join(',');
-
-    Object.assign(loc, req.body);
+    if (body.color !== undefined && body.color !== null) loc.color = hexColorToInt(body.color);
 
     db = getDatabase();
-    db.prepare('UPDATE fishing_locations SET name = ?, description = ?, color = ?, image = ?, location = ?, accessibility = ?, fish = ? WHERE id = ?')
-      .run(loc.name, loc.description, loc.color, loc.image, loc.location, loc.accessibility, loc.fish, req.params.id);
+    db.prepare('UPDATE fishing_locations SET name = ?, description = ?, color = ?, image = ?, gmapurl = ?, accessibility = ?, fish = ? WHERE id = ?')
+      .run(loc.name, loc.description, loc.color, loc.image, loc.gmapurl, loc.accessibility, loc.fish, req.params.id);
 
     res.json({ status: 'success' });
   } catch(err) {

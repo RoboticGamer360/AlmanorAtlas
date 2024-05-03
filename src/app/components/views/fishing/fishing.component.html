@@ -1,0 +1,32 @@
+<main class="bg-image">
+  <div class="bg-mask"></div>
+  <div class="wlimit">
+    <section>
+      <h2>Hot Fishing Spots</h2>
+      <div class="row">
+        <div class="card" *ngFor="let loc of locations" [style]="{backgroundColor: loc.color && bgColorOf(loc.color)}">
+          <img class="left" [src]="loc.image">
+          <div class="right">
+            <div class="info">
+              <h3>{{loc.name}}</h3>
+              <p *ngIf="loc.description !== undefined">{{loc.description}}</p>
+              <h4 *ngIf="loc.fish.length > 0">Fish in this Area</h4>
+              <p *ngIf="loc.fish.length > 0">{{loc.fish.join(', ')}}</p>
+            </div>
+            <div class="notes">
+              <span title="Accessibility" *ngIf="loc.accessibility !== undefined" class="accessibility">
+                <div class="icon icon-outlined icon-small">info</div>
+                <span>{{loc.accessibility}}</span>
+              </span>
+              <div *ngIf="loc.accessibility !== undefined && loc.gmapurl !== undefined" class="v-divider-2"></div>
+              <span *ngIf="loc.gmapurl !== undefined" class="gmapurl">
+                <div class="icon icon-outlined icon-small">place</div>
+                <a [href]="loc.gmapurl" target="_blank">View in Google Maps</a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
