@@ -6,7 +6,7 @@
     "dev": "concurrently -n \"Angular,  API  \" -c \"black.bgGreen.bold,black.bgCyan.bold\" yarn:dev-ng yarn:dev-api",
     "build": "ng build && tsc --build ./api/tsconfig.json",
     "start": "cross-env ENVIRONMENT=production node .",
-    "dev-ng": "ng serve --proxy-config proxy.config.json --open --host=\"0.0.0.0\"",
+    "dev-ng": "ng serve --proxy-config proxy.config.json --host=\"0.0.0.0\"",
     "dev-api": "ts-node-dev -P ./api/tsconfig.json ./api/src/main.ts"
   },
   "dependencies": {
