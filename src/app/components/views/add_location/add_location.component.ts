@@ -21,7 +21,7 @@ import { AuthService } from "src/app/core/auth/auth.service";
   locType: 'shopping' | 'food' | 'fishing' | null = null;
   locShop: API.NewShoppingLocationRequest = { name: "", color: "#2962ff" };
   locFood: API.NewFoodLocationRequest = { name: "", color: "#2962ff" };
-  locFish: API.NewFishingLocationRequest = { name: "", fish: [], color: "#2962ff" };
+  locFish: API.NewFishingLocationRequest = { name: "", color: "#2962ff" };
   fishInput = '';
   submitShopEnabled = false;
   submitFoodEnabled = false;
@@ -88,17 +88,17 @@ import { AuthService } from "src/app/core/auth/auth.service";
 
     switch (this.locType) {
       case 'shopping': {
-        response = await this.apiService.addShoppingLocation(this.locShop);
+        response = await this.apiService.addShoppingLocation(this.locShop, false);
         break;
       }
 
       case 'food': {
-        response = await this.apiService.addFoodLocation(this.locFood);
+        response = await this.apiService.addFoodLocation(this.locFood, false);
         break;
       }
 
       case 'fishing': {
-        response = await this.apiService.addFoodLocation(this.locFish);
+        response = await this.apiService.addFishingLocation(this.locFish, false);
         break;
       }
 

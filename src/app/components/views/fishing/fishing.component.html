@@ -10,8 +10,8 @@
             <div class="info">
               <h3>{{loc.name}}</h3>
               <p *ngIf="loc.description !== undefined">{{loc.description}}</p>
-              <h4 *ngIf="loc.fish.length > 0">Fish in this Area</h4>
-              <p *ngIf="loc.fish.length > 0">{{loc.fish.join(', ')}}</p>
+              <h4 *ngIf="loc.fish !== undefined">Fish in this Area</h4>
+              <p *ngIf="loc.fish !== undefined">{{loc.fish}}</p>
             </div>
             <div class="notes">
               <span title="Accessibility" *ngIf="loc.accessibility !== undefined" class="accessibility">

@@ -4,6 +4,7 @@ import { ShoppingComponent } from './components/views/shopping/shopping.componen
 import { FoodComponent } from './components/views/food/food.component';
 import { FishingComponent } from './components/views/fishing/fishing.component';
 import { AddLocationComponent } from './components/views/add_location/add_location.component';
+import { ContributeComponent } from './components/views/contribute/contribute.component';
 
 export const routes: Routes = [
   {
@@ -25,6 +26,10 @@ export const routes: Routes = [
   {
     path: 'add_location',
     component: AddLocationComponent
+  },
+  {
+    path: 'contribute',
+    component: ContributeComponent
   },
   {
     path: '**',

@@ -21,21 +21,24 @@ main {
   }
 }
 
-footer {
-  color: white;
+footer > .wlimit {
+  color: hsl(0 0% 100% / 0.75);
+  font-size: 1rem;
   background-color: var(--clr-primary);
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: center;
   padding-block: 1rem;
-  flex-direction: column;
   font-family: sans-serif;
   gap: 1rem;
-}
 
-.links {
-  display: flex;
-  gap: 0.25rem;
-  flex-direction: column;
-  align-items: center;
+  .v-divider-1 {
+    height: unset;
+    align-self: stretch;
+  }
+
+  a {
+    font-weight: 600;
+    text-decoration: underline;
+  }
 }

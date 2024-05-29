@@ -18,7 +18,8 @@ CREATE TABLE shopping_locations(
   description TEXT,
   address TEXT,
   color INTEGER,
-  image TEXT
+  image TEXT,
+  pending INTEGER NOT NULL
 );`, `
 CREATE TABLE food_locations(
   id INTEGER PRIMARY KEY,
@@ -26,7 +27,8 @@ CREATE TABLE food_locations(
   description TEXT,
   address TEXT,
   color INTEGER,
-  image TEXT
+  image TEXT,
+  pending INTEGER NOT NULL
 );`, `
 CREATE TABLE fishing_locations(
   id INTEGER PRIMARY KEY,
@@ -36,7 +38,8 @@ CREATE TABLE fishing_locations(
   image TEXT,
   gmapurl TEXT,
   accessibility TEXT,
-  fish TEXT NOT NULL
+  fish TEXT,
+  pending INTEGER NOT NULL
 );`, `
 CREATE TABLE tokens(
   token TEXT PRIMARY KEY,

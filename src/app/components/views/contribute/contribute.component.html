@@ -2,9 +2,10 @@
   <div class="bg-mask"></div>
   <div class="wlimit">
     <section>
-      <h1>Add Location</h1>
+      <i style="display: block; text-align: center; margin-block: 1rem;">Thanks for taking the time to contribute!</i>
+      <h1>Submit a Location</h1>
 
-      <h3>What kind of location are you adding?</h3>
+      <h3>What kind of location would you like to add?</h3>
       <input type="radio" [(ngModel)]="locType" value="shopping" id="shopping">
       <label for="shopping">Shopping</label>
       <br>
@@ -19,7 +20,7 @@
       <h2>New Shopping Location</h2>
 
       <h3>Name* (Required)</h3>
-      <input type="text" class="inp" [(ngModel)]="locShop.name" (ngModelChange)="evaluateSubmitButtons()" />
+      <input placeholder="Ex: Holiday Market" type="text" class="inp" [(ngModel)]="locShop.name" (ngModelChange)="evaluateSubmitButtons()" />
       <br><br>
 
       <h3>Description (Optional)</h3>
@@ -46,7 +47,7 @@
       <h2>New Restaurant</h2>
 
       <h3>Name* (Required)</h3>
-      <input required type="text" class="inp" [(ngModel)]="locFood.name" (ngModelChange)="evaluateSubmitButtons()" />
+      <input placeholder="Ex: Pizza Factory" required type="text" class="inp" [(ngModel)]="locFood.name" (ngModelChange)="evaluateSubmitButtons()" />
       <br><br>
 
       <h3>Description (Optional)</h3>
@@ -73,19 +74,15 @@
       <h2>New Fishing Location</h2>
 
       <h3>Name* (Required)</h3>
-      <input required type="text" class="inp" [(ngModel)]="locFish.name" (ngModelChange)="evaluateSubmitButtons()" />
+      <input placeholder="Ex: Canyondam" required type="text" class="inp" [(ngModel)]="locFish.name" (ngModelChange)="evaluateSubmitButtons()" />
       <br><br>
 
       <h3>Description (Optional)</h3>
       <input type="text" class="inp" [(ngModel)]="locFish.description" />
       <br><br>
 
-      <h3>Google Maps URL (Optional)</h3>
-      <input type="text" class="inp" [(ngModel)]="locFish.gmapurl" />
-      <br><br>
-
       <h3>Types of Fish (Optional)</h3>
-      <input placeholder="Brown Trout, Rainbow Trout, etc." type="text" class="inp" [(ngModel)]="fishInput" />
+      <input placeholder="Ex: Brown Trout and Rainbow Trout" type="text" class="inp" [(ngModel)]="fishInput" />
       <br><br>
 
       <h3>Accessibility (Optional)</h3>

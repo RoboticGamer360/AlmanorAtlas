@@ -6,6 +6,7 @@ export namespace DB {
     address: string | null;
     color: number | null;
     image: string | null;
+    pending: 1 | 2;
   };
 
   type FoodLocation = {
@@ -15,6 +16,7 @@ export namespace DB {
     address: string | null;
     color: number | null;
     image: string | null;
+    pending: 1 | 2;
   };
 
   type FishingLocation = {
@@ -25,7 +27,8 @@ export namespace DB {
     image: string | null;
     gmapurl: string | null;
     accessibility: string | null;
-    fish: string;
+    fish: string | null;
+    pending: 1 | 2;
   };
 }
 
@@ -109,7 +112,7 @@ export namespace API {
     color?: string | undefined;
     image: string;
     gmapurl?: string | undefined;
-    fish: string[];
+    fish?: string | undefined;
     accessibility?: string | undefined;
   };
 
@@ -130,7 +133,7 @@ export namespace API {
     color?: string | undefined;
     image?: string | undefined;
     gmapurl?: string | undefined;
-    fish: string[];
+    fish?: string | undefined;
     accessibility?: string | undefined;
   };
 
@@ -140,7 +143,7 @@ export namespace API {
     color?: string | undefined | null;
     image?: string | undefined | null;
     gmapurl?: string | undefined;
-    fish?: string[] | undefined;
+    fish?: string | undefined;
     accessibility?: string | undefined | null;
   };
 }
