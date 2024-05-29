@@ -90,7 +90,7 @@ import { AuthService } from "src/app/core/auth/auth.service";
       if (val === '') {
         // @ts-ignore
         // TypeScript has no way of knowing that `key` always exists on the object.
-        delete this.locShop[key];
+        delete this.locFish[key];
       }
     });
 
@@ -98,7 +98,7 @@ import { AuthService } from "src/app/core/auth/auth.service";
       if (val === '') {
         // @ts-ignore
         // TypeScript has no way of knowing that `key` always exists on the object.
-        delete this.locShop[key];
+        delete this.locFish[key];
       }
     });
 
