@@ -86,6 +86,22 @@ import { AuthService } from "src/app/core/auth/auth.service";
       }
     });
 
+    Object.entries(this.locFish).forEach(([key, val]) => {
+      if (val === '') {
+        // @ts-ignore
+        // TypeScript has no way of knowing that `key` always exists on the object.
+        delete this.locShop[key];
+      }
+    });
+
+    Object.entries(this.locFood).forEach(([key, val]) => {
+      if (val === '') {
+        // @ts-ignore
+        // TypeScript has no way of knowing that `key` always exists on the object.
+        delete this.locShop[key];
+      }
+    });
+
     switch (this.locType) {
       case 'shopping': {
         response = await this.apiService.addShoppingLocation(this.locShop, false);
